@@ -5,29 +5,64 @@ import UIKit
 // Write a function named applyKTimes that takes an integer K and a closure and calls the closure K times. The closure will not take any parameters and will not have a return value.
 
 
-// Your function here
+func applyKTimes(_ num: Int, action: () -> ()) {
+    for _ in 0..<num {
+        action()
+    }
+}
+
 
 // Uncomment out the following lines to check your solution
 
-//var myVal = 0
-//applyKTimes(5) {
-//    myVal += 1
-//}
-//assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
+var myVal = 0
 
+applyKTimes(5) {
+    myVal += 1
+}
+assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 
 // Question Two
 
 // Write a function called multiples(of:in) that takes in an array of Ints and returns all of the Ints that are a multiple of a given number n.  Use filter in your function.
 
-// Your function here
+func multiples(of: Int, inOf: [Int]) -> [Int] {
+    var multiplesArray = [Int]()
+    for num in inOf {
+        if num % of == 0 {
+            multiplesArray.append(num)
+        }
+    }
+    return multiplesArray
+}
+
+//func multiples1(of: Int, inOf: [Int]) -> [Int] {
+//    for num in inOf {
+//        if num % of == 0 {
+//            return inOf.filter(num)
+//        }
+//    }
+////    return inOf.filter(<#T##isIncluded: (Int) throws -> Bool##(Int) throws -> Bool#>)
+//}
+//func filterMultiples(closure: (Int) -> Bool, inOf: [Int]) -> [Int] {
+//        var multiplesArray = [Int]()
+//        for num in inOf {
+//            if closure(num) {
+//                multiplesArray.append(num)
+//            }
+//        }
+//}
+//
+//let filteredArray = filterMultiples(closure: { (num) -> Bool in
+//    return num % of
+//}, inOf: <#T##[Int]#>)
+
 
 // Uncomment out the following lines to check your solution
 
-//let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
-//let expectedOutputTwo = [3, 6, 9, 3, 12]
-//let outputTwo = multiples(of: 3, in: numbers)
-//assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
+let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
+let expectedOutputTwo = [3, 6, 9, 3, 12]
+let outputTwo = multiples(of: 3, inOf: numbers)
+assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
 
 
 // Question Three
