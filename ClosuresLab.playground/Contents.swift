@@ -25,36 +25,19 @@ assert(myVal == 5, "Expected myVal to be five, but was \(myVal)")
 
 // Write a function called multiples(of:in) that takes in an array of Ints and returns all of the Ints that are a multiple of a given number n.  Use filter in your function.
 
-func multiples(of: Int, inOf: [Int]) -> [Int] {
-    var multiplesArray = [Int]()
-    for num in inOf {
-        if num % of == 0 {
-            multiplesArray.append(num)
-        }
-    }
-    return multiplesArray
-}
-
-//func multiples1(of: Int, inOf: [Int]) -> [Int] {
+//func multiples(of: Int, inOf: [Int]) -> [Int] {
+//    var multiplesArray = [Int]()
 //    for num in inOf {
 //        if num % of == 0 {
-//            return inOf.filter(num)
+//            multiplesArray.append(num)
 //        }
 //    }
-////    return inOf.filter(<#T##isIncluded: (Int) throws -> Bool##(Int) throws -> Bool#>)
+//    return multiplesArray
 //}
-//func filterMultiples(closure: (Int) -> Bool, inOf: [Int]) -> [Int] {
-//        var multiplesArray = [Int]()
-//        for num in inOf {
-//            if closure(num) {
-//                multiplesArray.append(num)
-//            }
-//        }
-//}
-//
-//let filteredArray = filterMultiples(closure: { (num) -> Bool in
-//    return num % of
-//}, inOf: <#T##[Int]#>)
+
+func multiples(of: Int, inOf: [Int]) -> [Int] {
+    return inOf.filter { $0 % of == 0 }
+}
 
 
 // Uncomment out the following lines to check your solution
@@ -63,14 +46,15 @@ let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]
 let expectedOutputTwo = [3, 6, 9, 3, 12]
 let outputTwo = multiples(of: 3, inOf: numbers)
 assert(outputTwo == expectedOutputTwo, "Expected output to be \(expectedOutputTwo), but found \(outputTwo)")
-
+print(outputTwo)
 
 // Question Three
 
 // Write a function called largestValue(in:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
 
-// Your function here
-
+//func largestValue(inArr: [Int]) -> Int {
+//    return inArr.red
+//}
 // Uncomment out the following lines to check your solution
 
 //let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
