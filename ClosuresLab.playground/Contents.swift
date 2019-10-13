@@ -52,58 +52,85 @@ print(outputTwo)
 
 // Write a function called largestValue(in:) that finds the largest Int in an array of Ints. Use reduce to solve this exercise.
 
-//func largestValue(inArr: [Int]) -> Int {
-//    return inArr.red
-//}
+func largestValue(inArr: [Int]) -> Int {
+
+    var largeNum = inArr[0]
+    inArr.reduce(0) { x, y in
+        if y >= x {
+            largeNum = y
+        }
+        return y
+    }
+    return largeNum
+        
+    //    var largeNum = inArr[0]
+    //    for num in inArr {
+    //        if num >= largeNum {
+    //            largeNum = num
+    //        }
+    //    }
+    //    return largeNum
+    //    return inArr.reduce(0, { x, y in x + y })
+}
+
+
 // Uncomment out the following lines to check your solution
+// ????? not sure how to use reduce ????
 
-//let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
-//let expectedOutputThree = 9
-//let outputThree = largestValue(in: moreNumbers)
-//assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
-
+let moreNumbers = [4, 7, 1, 9, 6, 5, 6, 9]
+let expectedOutputThree = 9
+let outputThree = largestValue(inArr: moreNumbers)
+assert(outputThree == expectedOutputThree, "Expected output to be \(expectedOutputThree), but found \(outputThree)")
+print(largestValue(inArr: moreNumbers))
+//let numMax = moreNumbers.reduce(moreNumbers.min(), moreNumbers.max())
 
 // Question Four
 
 // Write a function called sortedNamesByLastName(in:) that takes in an array of tuples of type (String, String) and returns an array of tuples sorted by last name.
 
-// Your function here
-
+func sortedNamesByLastName(inArr: [(first: String, last: String)]) -> [(String, String)] {
+    return inArr.sorted { $0.last < $1.last }
+}
 // Uncomment out the following lines to check your solution
 
-//let firstAndLastTuples = [
-//    ("Johann S.", "Bach"),
-//    ("Claudio", "Monteverdi"),
-//    ("Duke", "Ellington"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov"),
-//    ("Scott","Joplin"),
-//    ("Josquin","Des Prez")
-//]
-//let expectedOutputFour = [
-//    ("Johann S.", "Bach"),
-//    ("Josquin","Des Prez"),
-//    ("Duke", "Ellington"),
-//    ("Scott","Joplin"),
-//    ("Claudio", "Monteverdi"),
-//    ("W. A.", "Mozart"),
-//    ("Nicolai","Rimsky-Korsakov")
-//]
+let firstAndLastTuples = [
+    ("Johann S.", "Bach"),
+    ("Claudio", "Monteverdi"),
+    ("Duke", "Ellington"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov"),
+    ("Scott","Joplin"),
+    ("Josquin","Des Prez")
+]
 
-//let outputFour = sortedNamesByLastName(in: firstAndLastTuples)
-//assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
+print(sortedNamesByLastName(inArr: firstAndLastTuples))
+let expectedOutputFour = [
+    ("Johann S.", "Bach"),
+    ("Josquin","Des Prez"),
+    ("Duke", "Ellington"),
+    ("Scott","Joplin"),
+    ("Claudio", "Monteverdi"),
+    ("W. A.", "Mozart"),
+    ("Nicolai","Rimsky-Korsakov")
+]
+
+let outputFour = sortedNamesByLastName(inArr: firstAndLastTuples)
+assert(outputFour.elementsEqual(expectedOutputFour, by: { $0 == $1 }), "Expected output to be \(expectedOutputFour), but found \(outputFour)")
 
 
 // Question Five
 
 // Write a function called sumOfSquaresOfOddNumbers(in:) that returns the sum of the squares of all the odd numbers from an array of Ints.  Use filter, map and reduce in your function.
 
-// Your function here
-
+func sumOfSquaresOfOddNumbers(inArr: [Int]) -> Int {
+    let oddNumbers = inArr.filter { $0 % 2 != 0 }
+    let squaredOdds = oddNumbers.map { $0 * $0 }
+    return squaredOdds.reduce(0, +)
+}
 // Uncomment out the following lines to check your solution
 
-//let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
-//let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
-//let outputFive = sumOfSquaresOfOddNumbers(in: evenMoreNumbers)
-//assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
-
+let evenMoreNumbers = [1, 2, 3, 4, 5, 6]
+let expectedOutputFive = 35 // Explanation: 1 + 9 + 25 -> 35
+let outputFive = sumOfSquaresOfOddNumbers(inArr: evenMoreNumbers)
+assert(outputFive == expectedOutputFive, "Expected output to be \(expectedOutputFive), but found \(outputFive)")
+print(sumOfSquaresOfOddNumbers(inArr: evenMoreNumbers))
